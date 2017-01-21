@@ -10,13 +10,13 @@ func _ready():
 func _fixed_process(delta):
 	velocity.y = delta * gravity
 	
-	if(Input.is_action_pressed("wm_jump")):
+	if Input.is_action_pressed("wm_jump"):
 		pass
 	
 	var motion = velocity * delta
 	motion = move(motion)
 	
-	if(is_colliding()):
+	if is_colliding():
 		velocity.x = WALK_SPEED
 		var n = get_collision_normal()
 		motion = n.slide(motion)
