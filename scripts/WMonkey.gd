@@ -7,12 +7,20 @@ var jumping = false
 var jumpAction = false
 var isGrounded = false
 
+func _on_WM_pressed():
+	if isGrounded:
+		global.WMonkeyAction = true
+
 func _ready():
 	set_process_input(true)
 	set_fixed_process(true)
-	
+
 func _input(event):
 	if event.is_action_pressed("wm_jump") && isGrounded:
+		global.WMonkeyAction = true
+
+	if global.WMonkeyAction:
+		global.WMonkeyAction = false
 		isGrounded = false
 		jumpAction = true
 		jumping = true
@@ -25,7 +33,7 @@ func _fixed_process(delta):
 	motion = move(motion)
 	
 	if is_colliding():
-		isGrounded = true	
+		isGrounded = true
 		velocity.x = WALK_SPEED
 		var n = get_collision_normal()
 		motion = n.slide(motion)

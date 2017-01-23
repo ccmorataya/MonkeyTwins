@@ -9,7 +9,8 @@ var isGrounded = false
 onready var global = get_node("/root/global")
 
 func _on_BM_pressed():
-	global.BMonkeyAction = true
+	if isGrounded:
+		global.BMonkeyAction = true
 	
 func _ready():
 	set_process_input(true)
@@ -20,7 +21,6 @@ func _input(event):
 		global.BMonkeyAction = true
 
 	if global.BMonkeyAction:
-		print("monkey")
 		global.BMonkeyAction = false
 		isGrounded = false
 		jumpAction = true
