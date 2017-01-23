@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export var gravity = 4000
 var velocity = Vector2(0,1)
-const WALK_SPEED = 150
+const WALK_SPEED = 0
 
 func _ready():
 	set_fixed_process(true)
