@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-export var gravity = 4000
+export var gravity = 1000
 var velocity = Vector2(0,0)
-const WALK_SPEED = 0
+const WALK_SPEED = 200
 var jumping = false
 var jumpAction = false
 var isGrounded = false
