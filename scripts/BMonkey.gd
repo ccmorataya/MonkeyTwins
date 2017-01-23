@@ -6,13 +6,22 @@ const WALK_SPEED = 180
 var jumping = false
 var jumpAction = false
 var isGrounded = false
+onready var global = get_node("/root/global")
 
+func _on_BM_pressed():
+	global.BMonkeyAction = true
+	
 func _ready():
 	set_process_input(true)
 	set_fixed_process(true)
 
 func _input(event):
 	if event.is_action_pressed("bm_jump") && isGrounded:
+		global.BMonkeyAction = true
+
+	if global.BMonkeyAction:
+		print("monkey")
+		global.BMonkeyAction = false
 		isGrounded = false
 		jumpAction = true
 		jumping = true

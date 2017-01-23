@@ -141,4 +141,6 @@ shortcut = null
 text = "BlackMonkey"
 flat = false
 
+[connection signal="pressed" from="BM" to="BMonkey" method="_on_BM_pressed"]
+
 
