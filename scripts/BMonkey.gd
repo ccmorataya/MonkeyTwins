@@ -2,14 +2,14 @@ extends KinematicBody2D
 
 export var gravity = 1500
 var velocity = Vector2(0,1)
-const WALK_SPEED = 180
 var jumping = false
 var jumpAction = false
 var isGrounded = false
 onready var global = get_node("/root/global")
 
 func _on_BM_pressed():
-	global.BMonkeyAction = true
+	if isGrounded:
+		global.BMonkeyAction = true
 	
 func _ready():
 	set_process_input(true)
@@ -20,7 +20,6 @@ func _input(event):
 		global.BMonkeyAction = true
 
 	if global.BMonkeyAction:
-		print("monkey")
 		global.BMonkeyAction = false
 		isGrounded = false
 		jumpAction = true
@@ -35,7 +34,7 @@ func _fixed_process(delta):
 	
 	if is_colliding():
 		isGrounded = true
-		velocity.x = WALK_SPEED
+		velocity.x = global.WALK_SPEED
 		var n = get_collision_normal()
 		motion = n.slide(motion)
 		velocity = n.slide(velocity)
