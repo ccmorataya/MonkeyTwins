@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://scripts/WMonkey.gd" type="Script" id=1]
-[ext_resource path="res://sprites/MonkeyHeadWhite.png" type="Texture" id=2]
+[ext_resource path="res://sprites/MonkeySpriteWhite.png" type="Texture" id=2]
 [ext_resource path="res://scripts/BMonkey.gd" type="Script" id=3]
 [ext_resource path="res://sprites/MonkeySprite.png" type="Texture" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=5]
@@ -37,81 +37,6 @@ margin/right = 40.0
 margin/bottom = 40.0
 script/script = SubResource( 1 )
 
-[node name="WMonkey" type="KinematicBody2D" parent="."]
-
-transform/pos = Vector2( 104.726, 34.9021 )
-input/pickable = false
-shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 1 )
-gravity = 4000
-
-[node name="WhiteMonkey" type="Sprite" parent="WMonkey"]
-
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WMonkey"]
-
-shape = SubResource( 2 )
-trigger = false
-_update_shape_index = 0
-
-[node name="BMonkey" type="KinematicBody2D" parent="."]
-
-transform/pos = Vector2( 213, 35 )
-input/pickable = false
-shapes/0/shape = SubResource( 3 )
-shapes/0/transform = Matrix32( 1.04192, 0, 0, 1.05601, -0.0503454, 0.0842857 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 3 )
-gravity = 4000
-
-[node name="BlackMonkey" type="Sprite" parent="BMonkey"]
-
-transform/scale = Vector2( 3, 3 )
-texture = ExtResource( 4 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BMonkey"]
-
-transform/pos = Vector2( -0.0503454, 0.0842857 )
-transform/scale = Vector2( 1.04192, 1.05601 )
-shape = SubResource( 3 )
-trigger = false
-_update_shape_index = 0
-
-[node name="Floor" type="StaticBody2D" parent="."]
-
-transform/pos = Vector2( 404.007, 170.329 )
-transform/scale = Vector2( 12.7612, 1 )
-input/pickable = false
-shapes/0/shape = SubResource( 4 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 2 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="Floor" type="Sprite" parent="Floor"]
-
-texture = ExtResource( 5 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-
-transform/pos = Vector2( 0, 2 )
-shape = SubResource( 4 )
-trigger = false
-_update_shape_index = 0
-
 [node name="WM" type="Button" parent="."]
 
 focus/ignore_mouse = false
@@ -143,6 +68,88 @@ enabled_focus_mode = 2
 shortcut = null
 text = "BlackMonkey"
 flat = false
+
+[node name="WMonkey" type="KinematicBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 98.1119, 34.9549 )
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 0.845246, 0, 0, 0.886006, -0.00276446, -6.66222 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+gravity = 4000
+
+[node name="WhiteMonkey" type="Sprite" parent="WMonkey"]
+
+transform/scale = Vector2( 3, 3 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WMonkey"]
+
+transform/pos = Vector2( -0.00276446, -6.66222 )
+transform/scale = Vector2( 0.845246, 0.886006 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="BMonkey" type="KinematicBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 213, 35 )
+input/pickable = false
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1.04277, 0, 0, 0.879425, -0.02583, -6.22577 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 3 )
+gravity = 4000
+
+[node name="BlackMonkey" type="Sprite" parent="BMonkey"]
+
+transform/scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BMonkey"]
+
+transform/pos = Vector2( -0.02583, -6.22577 )
+transform/scale = Vector2( 1.04277, 0.879425 )
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Floor 2" type="StaticBody2D" parent="."]
+
+visibility/behind_parent = true
+transform/pos = Vector2( 404.007, 170.329 )
+transform/scale = Vector2( 12.7612, 1 )
+input/pickable = false
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1.06506, 0, 0, 1.06625, 0.0496101, -0.186279 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="Floor" type="Sprite" parent="Floor 2"]
+
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor 2"]
+
+transform/pos = Vector2( 0.0496101, -0.186279 )
+transform/scale = Vector2( 1.06506, 1.06625 )
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
 
 [connection signal="pressed" from="WM" to="WMonkey" method="_on_WM_pressed"]
 
