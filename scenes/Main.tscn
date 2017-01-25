@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/WMonkey.gd" type="Script" id=1]
 [ext_resource path="res://sprites/MonkeyHeadWhite.png" type="Texture" id=2]
 [ext_resource path="res://scripts/BMonkey.gd" type="Script" id=3]
-[ext_resource path="res://sprites/MonkeyHeadBlack.png" type="Texture" id=4]
+[ext_resource path="res://sprites/MonkeySprite.png" type="Texture" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=5]
 
 [sub_resource type="GDScript" id=1]
@@ -18,7 +18,7 @@ extents = Vector2( 32, 32 )
 [sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32, 32 )
+extents = Vector2( 25.9191, 32.7339 )
 
 [sub_resource type="RectangleShape2D" id=4]
 
@@ -62,9 +62,10 @@ _update_shape_index = 0
 
 [node name="BMonkey" type="KinematicBody2D" parent="."]
 
+transform/pos = Vector2( 213, 35 )
 input/pickable = false
 shapes/0/shape = SubResource( 3 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 229.116, 37.6835 )
+shapes/0/transform = Matrix32( 1.04192, 0, 0, 1.05601, -0.0503454, 0.0842857 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -74,12 +75,13 @@ gravity = 4000
 
 [node name="BlackMonkey" type="Sprite" parent="BMonkey"]
 
-transform/pos = Vector2( 229.116, 37.6835 )
+transform/scale = Vector2( 3, 3 )
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BMonkey"]
 
-transform/pos = Vector2( 229.116, 37.6835 )
+transform/pos = Vector2( -0.0503454, 0.0842857 )
+transform/scale = Vector2( 1.04192, 1.05601 )
 shape = SubResource( 3 )
 trigger = false
 _update_shape_index = 0
@@ -90,7 +92,7 @@ transform/pos = Vector2( 404.007, 170.329 )
 transform/scale = Vector2( 12.7612, 1 )
 input/pickable = false
 shapes/0/shape = SubResource( 4 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 2 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -105,6 +107,7 @@ texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 
+transform/pos = Vector2( 0, 2 )
 shape = SubResource( 4 )
 trigger = false
 _update_shape_index = 0
