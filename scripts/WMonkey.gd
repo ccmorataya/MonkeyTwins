@@ -5,6 +5,9 @@ var velocity = Vector2(0,1)
 var jumping = false
 var jumpAction = false
 var isGrounded = false
+onready var monkeySound = get_node("monkeySound")
+var voiceID = 0
+var isWalking = false
 
 func _on_WM_pressed():
 	if isGrounded:
@@ -19,6 +22,7 @@ func _input(event):
 		global.WMonkeyAction = true
 
 	if global.WMonkeyAction:
+		monkeySound.play("Jump")
 		global.WMonkeyAction = false
 		isGrounded = false
 		jumpAction = true
@@ -40,3 +44,14 @@ func _fixed_process(delta):
 		move(motion)
 	else:
 		isGrounded = false
+		isWalking = false
+
+	if isGrounded:
+		if !isWalking:
+			play_sound()
+	else:
+		monkeySound.stop(voiceID)
+
+func play_sound():
+	voiceID = monkeySound.play("Walk")
+	isWalking = true

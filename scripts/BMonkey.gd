@@ -5,7 +5,9 @@ var velocity = Vector2(0,1)
 var jumping = false
 var jumpAction = false
 var isGrounded = false
-onready var global = get_node("/root/global")
+onready var monkeySound = get_node("monkeySound")
+var voiceID = 0
+var isWalking = false
 
 func _on_BM_pressed():
 	if isGrounded:
@@ -20,6 +22,7 @@ func _input(event):
 		global.BMonkeyAction = true
 
 	if global.BMonkeyAction:
+		monkeySound.play("Jump")
 		global.BMonkeyAction = false
 		isGrounded = false
 		jumpAction = true
@@ -41,3 +44,14 @@ func _fixed_process(delta):
 		move(motion)
 	else:
 		isGrounded = false
+		isWalking = false
+
+	if isGrounded:
+		if !isWalking:
+			play_sound()
+	else:
+		monkeySound.stop(voiceID)
+
+func play_sound():
+	voiceID = monkeySound.play("Walk")
+	isWalking = true
